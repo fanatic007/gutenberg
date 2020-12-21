@@ -1,0 +1,38 @@
+.book_card{
+  width: 124px;
+  color: var(--accent_color_dark);
+  background-color: var(--secondary_color);
+  font-size: 12px;
+  font-family: 'Montserat-Regular';
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  &__cover{
+    width: 114px;
+    height: 162px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+    background-color:var(--accent_color_light);
+  }
+
+  &__title{
+    text-transform: uppercase;
+    display: block;
+    margin: 5px;
+    max-height: 45px;
+    overflow-y: hidden ;
+    word-wrap: break-word;
+  }
+
+  &__author{    
+    margin: 5px;
+    display: block;
+    color: var(--accent_color_medium);
+    max-height: 45px;
+    overflow-y: hidden;
+  }  
+}
+
+.book_card:active{
+  border: solid 1px var(--primary_color);
+}

@@ -1,0 +1,14 @@
+{
+  "/ebooks/*": {
+      "target": "http://www.gutenberg.org",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+  },
+  "/files/*": {
+      "target": "http://www.gutenberg.org",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+  }
+}

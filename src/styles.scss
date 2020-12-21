@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap-grid.css';
+
+:root {
+  --primary_color: #5E56E7;
+  --secondary_color: #F8F7FF;
+  --accent_color_light: #F0F0F6;
+  --accent_color_medium: #A0A0A0;
+  --accent_color_dark: #333333;
+}
+
+@font-face{
+  font-family: 'Montserat-Regular';
+  src: url(/assets/fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'Montserat-Semi Bold';
+  src: url(/assets/fonts/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+body{
+  font-family: 'Montserat-Regular';
+  font-size: 16px;
+  height: 100%;
+  background-color: var(--secondary_color);
+}
+
+h1{
+  font-family: 'Montserat-Semi Bold';
+  font-size: 48px;
+  color:var(--primary_color);
+}
+
+h2{
+  font-family: 'Montserat-Semi Bold';
+  font-size: 30px;
+}
+
+.loader {
+  border: 2px solid var(--accent_color_medium); /* Light grey */
+  border-top: 2px solid var(--primary_color); /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+.centre_div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

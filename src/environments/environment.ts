@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  gutenberg_base_api_url :"http://skunkworks.ignitesol.com:8000/books/"
 };
 
 /*

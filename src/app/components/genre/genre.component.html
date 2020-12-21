@@ -1,0 +1,29 @@
+<div class="head">
+  <br>
+  <div class="container">
+    <div class="genre_title">
+      <img class="genre_tile__back" [src]="backIconPath" (click)="goBack()"/>
+      <h2 class="genre_title__label">{{genreName}}</h2>
+    </div>
+    <div class="text_box__wrapper">
+      <div class="text_box__icon"><img [src]="searchIconPath"/></div>
+      <input class="text_box__input" type="text" [(ngModel)]="searchQuery" placeholder="Search" #search_box/>
+      <div class="text_box__icon" (click)="clearSearch()" [hidden]="searchQuery.length==0"><img [src]="cancelIconPath"/></div>
+    </div>
+    <div>
+  </div>
+</div>
+<br>
+<div class="wrapper">
+  <br>
+  <div class="container">
+    <div class="flex-row">
+      <div *ngFor="let book of books" class="flex-col">
+        <gnb-book-card [bookCoverUrl]="book.cover" [bookTitle]="book.title" [bookAuthor]="book.authors" (click)="openBook(book.book_url)"></gnb-book-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showSpinner" class="centre_div" #anchor> <!-- tag entered for IntersectionObserver -->
+    <div class="loader"></div>
+  </div>
+</div>
