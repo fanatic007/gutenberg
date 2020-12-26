@@ -7,7 +7,7 @@
     </div>
     <div class="text_box__wrapper">
       <div class="text_box__icon"><img [src]="searchIconPath"/></div>
-      <input class="text_box__input" type="text" [(ngModel)]="searchQuery" placeholder="Search" #search_box/>
+      <input class="text_box__input" type="text" [(ngModel)]="searchQuery" placeholder="Search" #searchBox/>
       <div class="text_box__icon" (click)="clearSearch()" [hidden]="searchQuery.length==0"><img [src]="cancelIconPath"/></div>
     </div>
     <div>
