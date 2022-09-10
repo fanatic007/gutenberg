@@ -6,9 +6,8 @@
       <h2 class="genre_title__label">{{genreName}}</h2>
     </div>
     <div class="text_box__wrapper">
-      <div class="text_box__icon"><img [src]="searchIconPath"/></div>
-      <input class="text_box__input" type="text" [(ngModel)]="searchQuery" placeholder="Search" #searchBox/>
-      <div class="text_box__icon" (click)="clearSearch()" [hidden]="searchQuery.length==0"><img [src]="cancelIconPath"/></div>
+      <div role="icon" class="text_box__icon"><img [src]="searchIconPath"/></div>
+      <input aria-label="search book" class="text_box__input" type="search" [(ngModel)]="searchQuery" placeholder="Search" #searchBox/>
     </div>
     <div>
   </div>

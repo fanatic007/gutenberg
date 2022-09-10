@@ -1,5 +1,5 @@
-<div class="genre_card__wrapper">
-  <div><img class="genre_card__icon1" [src]="icon1Path"/></div>
-  <span class="genre_card__label" type="text">{{genreName}}</span>
-  <div class="genre_card__icon2"><img [src]="icon2Path"/></div>
-</div>
+<figure role="button" class="genre_card__wrapper">
+  <img class="genre_card__icon1" [src]="icon1Path" alt={{genreName}} />
+  <figcaption class="genre_card__label">{{genreName}}</figcaption>
+  <img class="genre_card__icon2" [src]="icon2Path"/>
+</figure>

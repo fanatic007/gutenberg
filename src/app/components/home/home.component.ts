@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   title = "Gutenberg Project";
-  subtitle = "A social cataloging website that allows you to freely search its database of books, annotations, and reviews";
+  subtitle = "A library of over 60,000 free eBooks";
   iconsBasePath = '/assets/icons/';
   genres = GENRES;
   constructor(private router: Router) { }

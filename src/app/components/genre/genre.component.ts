@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { map, throttleTime } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../services/books.service';
 import * as JSZip from 'jszip';
@@ -23,7 +23,7 @@ export class GenreComponent implements OnInit, AfterViewInit, OnDestroy {
   cancelIconPath: String;
   backIconPath: String;
   @ViewChild('searchBox') searchBox:ElementRef;
-  searchQuery: String = "";
+  searchQuery: String = "The Ad";
   genreName;
   books : Book[] = [];
   @ViewChild('anchor') anchor: ElementRef;
@@ -56,11 +56,14 @@ export class GenreComponent implements OnInit, AfterViewInit, OnDestroy {
     }, this.options);
     this.intersectionObserver.observe(this.anchor.nativeElement);
     /* Subsciption to an observable created from 'keyup' event of search box. Observed every second using throttleTime operator */
-    this.searchBoxSubscription = fromEvent(this.searchBox.nativeElement, 'keyup').pipe( throttleTime(1000) ).subscribe((event)=>{ 
-      if( (<any>event).keyCode !== 8){
-        this.nextPageUrl = undefined;
-        this.books=[];
-        this.getMoreBooks();
+    this.searchBoxSubscription = fromEvent(this.searchBox.nativeElement, 'keyup').pipe(
+        throttleTime(1000),
+        map((event:any)=> !event.altKey && !(event.keyCode == 32) )
+      ).subscribe(queryEntered=>{ console.log(queryEntered);
+        if(queryEntered){
+          this.nextPageUrl = undefined;
+          this.books=[];
+          this.getMoreBooks();
       }
     });
   }
@@ -123,11 +126,6 @@ export class GenreComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.navigateByUrl('home');
   }
 
-  clearSearch(){
-    this.searchQuery = "";
-    this.searchBox.nativeElement.focus();
-  }
-
   openBook(book_url){
     if(book_url === undefined){
       alert('No Viewable Version Available');
@@ -150,7 +148,7 @@ export class GenreComponent implements OnInit, AfterViewInit, OnDestroy {
                 else{
                   key = this.findPropertyNameByRegex(zip.files,/\/*\.pdf/g);
                   if(key){
-                    mime_type = "application/pdf";                    
+                    mime_type = "application/pdf";
                   }
                   else{
                     key = this.findPropertyNameByRegex(zip.files,/\/*\.txt/g);
@@ -165,8 +163,7 @@ export class GenreComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
                 zip.file(key).async("base64").then((res)=>{
                   let new_window = window.open("");
-                  new_window.document.write("<iframe width='100%' height='100%' src='data:text/html;base64, " +
-                  encodeURI(res) + "'></iframe>");
+                  new_window.document.write("<iframe width='100%' height='100%' src='data:"+ mime_type +";base64, " + encodeURI(res) + "'></iframe>");
                 })
               });
             });

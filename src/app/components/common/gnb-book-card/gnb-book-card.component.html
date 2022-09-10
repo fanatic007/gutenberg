@@ -1,7 +1,5 @@
-<div class="book_card">
-  <img class="book_card__cover" [src]="bookCoverUrl" />
-  <div>
-    <span class="book_card__title">{{bookTitle}}</span>
-    <span class="book_card__author">{{bookAuthor}}</span>
-  </div>
-</div>
+<figure role="button" class="book_card">
+  <img class="book_card__cover" [src]="bookCoverUrl" alt={{bookTitle}} />
+  <figcaption class="book_card__title">{{bookTitle}}</figcaption>
+  <figcaption class="book_card__author">{{bookAuthor}}</figcaption>
+</figure>

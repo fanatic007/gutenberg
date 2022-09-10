@@ -29,7 +29,7 @@
     font-family: 'Montserat-Regular';
     font-size: 16px;
     caret-color: var(--primary_color);
-    padding: 0px 10px 0xp 60px;
+    padding:10px 0px;
     height: 40px;
     width: 100%;
     background-color: var(--secondary_color);
@@ -37,9 +37,24 @@
     outline: none;
   }
 
-  &__icon{
-    padding: 10px;
+  &__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 36px;
+    width: 36px;
     color: var(--primary_color);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;      
+    background-image:url('/assets/icons/Cancel.svg');
+  }
+
+  &__input::-webkit-search-cancel-button:hover {
+    cursor: pointer;
+  }
+
+  &__icon{
+    color: var(--secondary_color);
+    padding: 10px;
   }
 
   &__icon:focus{
@@ -54,12 +69,12 @@
 }
 
 .flex-col {
-  flex-direction: column;
   padding: 15px;
 }
 
 .flex-row{
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-left: -15px;
